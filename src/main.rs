@@ -26,6 +26,7 @@ pub mod route;
 pub mod utils;
 
 mod schema;
+mod test;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {

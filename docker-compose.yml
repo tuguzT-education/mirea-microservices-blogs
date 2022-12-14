@@ -1,4 +1,5 @@
 services:
+
   server:
     build: .
     depends_on:
@@ -8,6 +9,12 @@ services:
       - 8080:8080
     environment:
       - DATABASE_URL=postgres://postgres:password@postgres:5432/cringy-blog
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8080/health" ]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+
   postgres:
     image: ubuntu/postgres:latest
     environment:

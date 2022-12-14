@@ -11,6 +11,13 @@ jobs:
   deploy_blogs:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          TZ: UTC
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: cringy-blog
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -31,10 +38,3 @@ jobs:
           context: .
           push: true
           tags: tuguzt/service-blogs:latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          TZ: UTC
-          POSTGRES_PASSWORD: password
-          POSTGRES_DB: cringy-blog

@@ -59,7 +59,7 @@ async fn test_create() {
     let name = "New blog";
 
     tokio::spawn(async move {
-        let database_url = std::env::var("DATABASE_URL").expect("DATABASE_URL must be set");
+        let database_url = "";
         let manager = ConnectionManager::<PgConnection>::new(database_url);
         let pool = Pool::builder()
             .test_on_check_out(true)
